@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title Socket.IO chat
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js")
+    script(src="https://code.jquery.com/jquery-1.11.1.js")
+
+    script.
+      $(function () {
+        var socket = io();
+        $('form').submit(function(e){
+          e.preventDefault(); // prevents page reloading
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+        });
+      });
+
+  body
+    block content
