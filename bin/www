@@ -9,6 +9,12 @@ var debug = require('debug')('test-socket:server');
 var http = require('http');
 
 /**
+ * Carga .env con dotenv 
+ */
+
+require('dotenv').config();
+
+/**
  * Get port from environment and store in Express.
  */
 
